@@ -11,7 +11,7 @@
 
 
 body {
-    background-image: url(/img/game_boy.png);
+    background-image: url(../img/game_boy.png);
     background-size: contain;
     /* font-family: 'pokemon_gb'; */
 }
