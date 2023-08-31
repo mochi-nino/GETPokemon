@@ -167,7 +167,7 @@ span {
     left: 0;
     right: 0;
     margin: auto;
-    background-image: url(/img/talk.png);
+    background-image: url(../img/talk.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
@@ -256,7 +256,7 @@ span {
     left: 0;
     right: 0;
     margin: auto;
-    background-image: url(/img/talk.png);
+    background-image: url(../img/talk.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
@@ -285,7 +285,7 @@ span {
     left: 0;
     right: 0;
     margin: auto;
-    background-image: url(/img/talk.png);
+    background-image: url(../img/talk.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
