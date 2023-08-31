@@ -1,0 +1,308 @@
+/* @font-face {
+    font-family: 'pokemon_gb';
+    src: url(/font/pkmn_r.ttf);
+
+} */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    background-image: url(/img/game_boy.png);
+    background-size: contain;
+    /* font-family: 'pokemon_gb'; */
+}
+
+
+h2 {
+    text-align: center;
+    font-size: 30px;
+    padding: 20px;
+    background-color: rgb(107, 0, 0);
+    color: #fff;
+
+}
+
+p,
+span {
+    font-size: 18px;
+}
+
+.title {
+    display: flex;
+    background-color: rgb(107, 0, 0);
+    color: #fff;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 100px;
+}
+
+.title2 {
+    text-align: center;
+    display: block;
+    margin: 10px auto;
+}
+
+#app {
+    display: flex;
+    margin: 20px auto;
+    width: 1600px;
+    position: relative;
+    justify-content: center;
+}
+
+#app .menu {
+    width: 600px;
+    border-right: 1px solid black;
+    background-color: #999;
+    border-radius: 10px;
+    opacity: 0.9;
+    color: #fff;
+}
+
+#app .list {
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    justify-content: space-between;
+}
+
+.list .pic {
+    width: 100px;
+}
+
+#app .pic img {
+    width: 100%;
+    vertical-align: top;
+}
+
+.name {
+    width: 80px;
+    text-align: center;
+}
+
+.btu {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+}
+
+#app .countbut {
+    cursor: pointer;
+}
+
+.price {
+    width: 90px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+
+.addcart img {
+    vertical-align: top;
+}
+
+.addcart {
+    background-color: rgb(176, 9, 9);
+    color: #fff;
+    border-radius: 20px;
+    display: flex;
+    padding: 5px 20px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+#app .cart {
+    width: 700px;
+    text-align: center;
+    background-color: #999;
+    border-radius: 10px;
+    opacity: 0.9;
+    color: #fff;
+
+}
+
+.cart-box {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* display: flex;
+    flex-wrap: wrap; */
+    margin: 0 8px;
+    gap: 10px;
+    box-sizing: border-box;
+
+}
+
+.cart_list {
+    display: flex;
+    align-items: center;
+    padding: 5px 2px;
+    gap: 10px;
+    margin-right: 5px;
+}
+
+.cart_list .pic {
+    width: 50px;
+}
+
+.cart_list .price {
+    width: 150px;
+}
+
+.cart_list .price img {
+    width: 30px;
+}
+
+.get {
+    width: 500px;
+    min-height: 300px;
+    position: absolute;
+    top: 150px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background-image: url(/img/talk.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: fixed;
+    /* border: 1px solid red; */
+}
+
+.get-pokemon {
+    margin: 30px auto;
+    width: 250px;
+    margin-top: 50px;
+}
+
+.get .pic {
+    width: 100px;
+    margin: auto;
+    padding-top: 30px;
+}
+
+.get .name {
+    margin: 10px auto
+}
+
+.get .price {
+    display: grid;
+    grid-template-columns: repeat(5, 30px);
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    padding-bottom: 40px;
+    max-height: 100px;
+    overflow: auto;
+    margin-bottom: 10px;
+
+}
+
+.get-btn {
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 60px;
+}
+
+.get span {
+    padding: 10px 20px;
+    background-color: rgb(107, 0, 0);
+    color: #fff;
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+.get span:first-child {
+    margin-right: 50px;
+}
+
+.hidden {
+    display: none;
+}
+
+.del i {
+    cursor: pointer;
+}
+
+.tool {
+    margin-top: 20px;
+    margin-inline: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 80px;
+}
+
+.tool p:nth-child(2) {
+    padding: 10px 20px;
+    background-color: rgb(107, 0, 0);
+    color: #fff;
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+.error {
+    width: 500px;
+    min-height: 300px;
+    position: absolute;
+    top: 150px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background-image: url(/img/talk.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: fixed;
+    text-align: center;
+}
+
+.error p {
+    margin-block: 80px;
+    font-size: 22px;
+}
+
+.error span {
+    padding: 10px 20px;
+    background-color: rgb(107, 0, 0);
+    color: #fff;
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+.error2 {
+    width: 300px;
+    min-height: 300px;
+    position: absolute;
+    top: 250px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background-image: url(/img/talk.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: fixed;
+    text-align: center;
+}
+
+.error2 p {
+    margin-block: 80px;
+    font-size: 22px;
+}
+
+
+.error2 span {
+    padding: 10px 20px;
+    background-color: rgb(107, 0, 0);
+    color: #fff;
+    cursor: pointer;
+    border-radius: 20px;
+}

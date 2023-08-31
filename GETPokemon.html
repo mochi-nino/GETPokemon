@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/pokemon.css">
+
+</head>
+
+
+<body>
+    <div id="app">
+        <div class="menu">
+            <div class="title">
+                <h2>寶可夢</h2>
+                <span>
+                    <img src="img/ball.png" alt="">x{{ballCount}}
+                </span>
+            </div>
+
+            <div class="list" v-for="(pokemon,index) in pokemons" :key="pokemon.id">
+                <div class="pic">
+                    <img :src="pokemon.src" :alt="pokemon.name">
+                </div>
+                <div class="name">
+                    <p>{{pokemon.name}}</p>
+                </div>
+
+                <!-- <div class="btu">
+                    <span class="countbut" @click="addCount(index)">＋</span>
+                    <span>{{pokemon.count}}</span>
+                    <span class="countbut" @click="reduceCount(index)">－</span>
+                </div> -->
+                <!-- <div class="price">
+
+                </div> -->
+                <!-- addCart(pokemon.src,pokemon.name,pokemon.count,pokemon.price,index) -->
+                <div class="addcart"
+                    @click="addCount(index,pokemon.id); toBox(pokemon.src, pokemon.name, pokemon.count, pokemon.price, index)">
+                    <p>丟球</p>
+                    <img src="img/ball.png" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="cart">
+            <h2>包包</h2>
+            <div class="cart-box">
+                <div class="cart_list" v-for="(CartList, i) in CartLists" :key="i">
+                    <div class="pic">
+                        <img :src="CartList.src" :alt="CartList.name">
+                    </div>
+                    <div class="name">
+                        <p>{{ CartList.name }}</p>
+                    </div>
+                    <div class="price">
+                        <img v-for="ball in CartList.count" src="img/ball.png" alt="">
+                    </div>
+                    <div class="del">
+                        <i @click="delCart(CartList.count,i )" class="fa-solid fa-trash-can"
+                            style="color: #6b0000;"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="tool">
+                <p>已花費<img src="img/ball.png">x{{allCount}}顆</p>
+                <p @click="allDel(CartLists,i,allCount,ballCount)">全部放生</p>
+            </div>
+        </div>
+        <div class="get" v-if="!hidden" v-for="(box, i) in boxs" :key="s">
+            <div class="get-pokemon">
+                <div class="pic">
+                    <img :src="box.src" :alt="box.name">
+                </div>
+                <div class="name">
+                    <p>{{ box.name }}</p>
+                </div>
+                <div class="title2">已使用 x{{box.count}}顆</div>
+                <div class="price">
+                    <img v-for="ball in box.count" src="img/ball.png" alt="">
+                </div>
+                <div class="get-btn">
+                    <span show="false" @click="toBag(box.src,box.name,box.count,box.price,index)">放入包包</span>
+                    <span @click="bye()">放生</span>
+                </div>
+            </div>
+            <div v-if="!hidden3" class="error2">
+                <p>球不夠，{{box.name}}逃跑了...</p>
+                <span @click="hidden=true,hidden3=true ">滾吧可撥仔</span>
+            </div>
+        </div>
+
+
+        <div v-if="!hidden2" class="error">
+            <p>還貪！勸你不要<br>沒球了還想抓==</p>
+            <span @click="hidden2=true">窩知道了</span>
+        </div>
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+    <script>
+        Vue.createApp({
+            data() {
+                return {
+
+
+                    pokemons: [
+                        {
+                            id: 1,
+                            src: 'img/01.png',
+                            name: '妙蛙種子',
+                            count: 0,
+                            price: 1
+                        },
+                        {
+                            id: 2,
+                            src: 'img/02.png',
+                            name: '小火龍',
+                            count: 0,
+                            price: 1
+                        },
+                        {
+                            id: 3,
+                            src: 'img/03.png',
+                            name: '傑尼龜',
+                            count: 0,
+                            price: 1
+                        },
+                        {
+                            id: 4,
+                            src: 'img/04.png',
+                            name: '菊草葉',
+                            count: 0,
+                            price: 1
+                        },
+                        {
+                            id: 5,
+                            src: 'img/05.png',
+                            name: '火球鼠',
+                            count: 0,
+                            price: 1
+                        },
+                        {
+                            id: 6,
+                            src: 'img/06.png',
+                            name: '小巨鱷',
+                            count: 0,
+                            price: 1
+                        },
+                        {
+                            id: 7,
+                            src: 'img/07.png',
+                            name: '木手宮',
+                            count: 0,
+                            price: 1
+                        },
+                        {
+                            id: 8,
+                            src: 'img/08.png',
+                            name: '火雉雞',
+                            count: 0,
+                            price: 1
+                        },
+                        {
+                            id: 9,
+                            src: 'img/09.png',
+                            name: '水躍魚',
+                            count: 0,
+                            price: 1
+                        },
+                        {
+                            id: 10,
+                            src: 'img/10.png',
+                            name: '夢幻',
+                            count: 0,
+                            price: 12
+                        },
+                    ],
+                    boxs: [],
+                    CartLists: [],
+                    hidden: true,
+                    hidden2: true,
+                    hidden3: true,
+                    allCount: 0,
+                    ballCount: 100,
+
+                }
+            },
+            methods: {
+
+                addCount(index, id) {
+                    // this.pokemons[index].count++
+                    if (id == 10) {
+                        this.pokemons[index].count += Math.floor(Math.random() * 60) + 30
+                    }
+                    else {
+                        this.pokemons[index].count += Math.floor(Math.random() * 10) + 1
+                    }
+                },
+                // reduceCount(index) {
+                //     if (this.pokemons[index].count > 0) {
+                //         this.pokemons[index].count--
+                //     }
+                // },
+
+                toBox(src, name, count, price, index) {
+                    if (this.ballCount > count) {
+                        const getPokemon = {
+                            src: src,
+                            name: name,
+                            count: count,
+                            price: price,
+                        };
+                        this.boxs.push(getPokemon)
+                        console.log(getPokemon)
+                        this.hidden = false;
+                    }
+                    else {
+                        this.hidden2 = false;
+                    }
+
+                },
+                toBag(src, name, count, price, index) {
+                    if (this.ballCount >= count) {
+                        const ToBaging = {
+                            src: src,
+                            name: name,
+                            count: count,
+                            price: price,
+                        };
+                        this.CartLists.push(ToBaging)
+                        this.hidden = true;
+                        this.boxs = []
+                        this.allCount += count;
+                        this.ballCount -= count
+                    }
+                    else {
+                        this.hidden3 = false;
+                    }
+                },
+                bye() {
+                    this.boxs = []
+                    this.hidden = true;
+                }
+                ,
+                // addCart(src, name, count, price, index) {
+                //     if (count !== 0) {
+                //         const cart = {
+                //             src: src,
+                //             name: name,
+                //             count: count,
+                //             price: price,
+                //         };
+                //         this.CartLists.push(cart)
+                //         this.pokemons[index].count = 0
+                //         console.log(cart)
+                //     }
+                // },
+                delCart(count, i) {
+                    if (i >= 0 && i < this.CartLists.length) {
+                        this.CartLists.splice(i, 1)
+                        this.allCount -= count
+                        this.ballCount += count
+                    }
+                },
+                allDel(CartLists, i, allCount, ballCount) {
+                    this.CartLists = []
+                    this.ballCount += allCount
+                    this.allCount = 0
+
+
+                }
+            },
+        }).mount("#app");
+
+    </script>
+
+</body>
+
+</html>
