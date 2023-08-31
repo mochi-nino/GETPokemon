@@ -108,14 +108,17 @@ span {
 }
 
 .addcart {
-    background-color: rgb(176, 9, 9);
+    /* background-color: rgb(176, 9, 9);
     color: #fff;
-    border-radius: 20px;
+    border-radius: 20px; */
     display: flex;
-    padding: 5px 20px;
     align-items: center;
     justify-content: center;
+    padding: 10px 20px;
+    background-color: rgb(107, 0, 0);
+    color: #fff;
     cursor: pointer;
+    border-radius: 20px;
 }
 
 #app .cart {

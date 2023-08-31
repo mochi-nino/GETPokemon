@@ -97,7 +97,8 @@
 
 
         <div v-if="!hidden2" class="error">
-            <p>還貪！勸你不要<br>沒球了還想抓==</p>
+            <p v-if="ballCount === 0">還貪！勸你不要<br>沒球ㄌ還想抓==</p>
+            <p v-if="ballCount > 0">哈哈！你撲空</p>
             <span @click="hidden2=true">窩知道了</span>
         </div>
 
@@ -204,13 +205,14 @@
             methods: {
 
                 addCount(index, id) {
-                    // this.pokemons[index].count++
-                    if (id == 10) {
-                        this.pokemons[index].count += Math.floor(Math.random() * 60) + 30
+                    if (id === 10) {
+                        this.pokemons[index].count = Math.floor(Math.random() * 60) + 30;
+                    } else {
+                        this.pokemons[index].count = Math.floor(Math.random() * 8) + 1;
                     }
-                    else {
-                        this.pokemons[index].count += Math.floor(Math.random() * 10) + 1
-                    }
+
+                    console.log(id);
+                    // console.log(pp);
                 },
                 // reduceCount(index) {
                 //     if (this.pokemons[index].count > 0) {
@@ -219,7 +221,7 @@
                 // },
 
                 toBox(src, name, count, price, index) {
-                    if (this.ballCount > count) {
+                    if (this.ballCount >= count) {
                         const getPokemon = {
                             src: src,
                             name: name,
