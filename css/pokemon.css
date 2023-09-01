@@ -42,6 +42,31 @@ span {
     position: absolute;
     right: 25px;
     bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bagTitle {
+    background-color: rgb(107, 0, 0);
+    color: #fff;
+    padding: 0 100px;
+    position: relative;
+}
+
+.bagTitle span {
+    position: absolute;
+    right: 25px;
+    bottom: 10px;
+    padding: 5px 15px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(107, 0, 0);
+    cursor: pointer;
+    border-radius: 20px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .title2 {
@@ -256,8 +281,8 @@ span {
 }
 
 .error {
-    width: 500px;
-    min-height: 300px;
+    width: 600px;
+    min-height: 350px;
     position: absolute;
     top: 150px;
     left: 0;
@@ -272,7 +297,7 @@ span {
 }
 
 .error p {
-    margin-block: 80px;
+    margin-block: 90px;
     font-size: 22px;
 }
 
@@ -282,6 +307,7 @@ span {
     color: #fff;
     cursor: pointer;
     border-radius: 20px;
+    margin-inline: 10px;
 }
 
 .error2 {
@@ -300,9 +326,15 @@ span {
     text-align: center;
 }
 
+
 .error2 p {
-    margin-block: 80px;
-    font-size: 22px;
+    font-size: 20px;
+    margin-block: 30px;
+}
+
+.error2 p:first-child {
+    margin-top: 80px;
+    font-size: 20px;
 }
 
 

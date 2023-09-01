@@ -49,7 +49,12 @@
             </div>
         </div>
         <div class="cart">
-            <h2>包包</h2>
+            <div class="bagTitle">
+                <h2>包包</h2>
+                <span @click="buyBall">
+                    購買<img src="img/ball.png" alt="">x10
+                </span>
+            </div>
             <div class="cart-box">
                 <div class="cart_list" v-for="(CartList, i) in CartLists" :key="i">
                     <div class="pic">
@@ -80,7 +85,7 @@
                 <div class="name">
                     <p>{{ box.name }}</p>
                 </div>
-                <div class="title2">已使用 x{{box.count}}顆</div>
+                <div class="title2">使用 x{{box.count}}顆</div>
                 <div class="price">
                     <img v-for="ball in box.count" src="img/ball.png" alt="">
                 </div>
@@ -91,15 +96,17 @@
             </div>
             <div v-if="!hidden3" class="error2">
                 <p>球不夠，{{box.name}}逃跑了...</p>
-                <span @click="hidden=true,hidden3=true ">滾吧可撥仔</span>
+                <p>嘻嘻不課金的下場就是這樣</p>
+                <span @click="boxs=[],hidden=true,hidden3=true">你可以滾了可撥仔</span>
             </div>
         </div>
 
 
         <div v-if="!hidden2" class="error">
-            <p v-if="ballCount === 0">還貪！勸你不要<br>沒球ㄌ還想抓==</p>
-            <p v-if="ballCount > 0">哈哈！你撲空</p>
-            <span @click="hidden2=true">窩知道了</span>
+            <p>還貪！<br>沒球ㄌ還想抓R==</p>
+            <!-- <p v-if="ballCount > 0">哈哈！你撲空</p> -->
+            <span @click="buyBall(ballCount)">課金買球</span>
+            <span @click="hidden2=true">狗才課ㄅㄅ</span>
         </div>
 
 
@@ -221,7 +228,7 @@
                 // },
 
                 toBox(src, name, count, price, index) {
-                    if (this.ballCount >= count) {
+                    if (this.ballCount) {
                         const getPokemon = {
                             src: src,
                             name: name,
@@ -232,7 +239,7 @@
                         console.log(getPokemon)
                         this.hidden = false;
                     }
-                    else {
+                    else if (this.ballCount === 0) {
                         this.hidden2 = false;
                     }
 
@@ -285,6 +292,13 @@
                     this.ballCount += allCount
                     this.allCount = 0
 
+
+                },
+                buyBall(ballCount) {
+                    if (this.ballCount < 200) {
+                        this.ballCount += 10
+                    }
+                    this.hidden2 = true
 
                 }
             },
