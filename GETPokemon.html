@@ -77,7 +77,7 @@
                 <p @click="allDel(CartLists,i,allCount,ballCount)">全部放生</p>
             </div>
         </div>
-        <div class="get" v-if="!hidden" v-for="(box, i) in boxs" :key="s">
+        <div class="get" v-if="!hidden" v-for="(box, i) in boxs" :key="i">
             <div class="get-pokemon">
                 <div class="pic">
                     <img :src="box.src" :alt="box.name">
@@ -91,7 +91,7 @@
                 </div>
                 <div class="get-btn">
                     <span show="false" @click="toBag(box.src,box.name,box.count,box.price,index)">放入包包</span>
-                    <span @click="bye()">放生</span>
+                    <span @click="bye(boxs)">放生</span>
                 </div>
             </div>
             <div v-if="!hidden3" class="error2">
@@ -262,11 +262,10 @@
                         this.hidden3 = false;
                     }
                 },
-                bye() {
+                bye(boxs) {
                     this.boxs = []
                     this.hidden = true;
-                }
-                ,
+                },
                 // addCart(src, name, count, price, index) {
                 //     if (count !== 0) {
                 //         const cart = {
